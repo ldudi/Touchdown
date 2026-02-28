@@ -10,6 +10,7 @@ import SwiftUI
 struct ProductDetailView: View {
     
     // MARK: - PROPERTIES
+    @EnvironmentObject var shop: Shop
     
     
     // MARK: - BODY
