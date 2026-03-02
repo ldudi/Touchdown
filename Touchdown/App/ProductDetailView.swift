@@ -42,7 +42,7 @@ struct ProductDetailView: View {
                 
                 // DESCRIPTION
                 ScrollView(.vertical, showsIndicators: false) {
-                    Text(sampleProduct.description)
+                    Text(shop.selectedProduct?.description ?? sampleProduct.description)
                         .font(.system(.body, design: .rounded))
                         .foregroundStyle(.gray)
                         .multilineTextAlignment(.leading)
@@ -66,7 +66,8 @@ struct ProductDetailView: View {
         } //: VSTACK
         .zIndex(0)
         .ignoresSafeArea(.all, edges: .all)
-        .background(sampleProduct.colorValue).ignoresSafeArea(.all, edges: .all)
+        .background(
+            shop.selectedProduct?.colorValue ?? sampleProduct.colorValue).ignoresSafeArea(.all, edges: .all)
         
     }
 }
@@ -75,4 +76,5 @@ struct ProductDetailView: View {
 
 #Preview {
     ProductDetailView()
+        .environmentObject(Shop())
 }

@@ -20,7 +20,6 @@ struct ContentView: View {
                     NavigationBarView()
                         .padding(.horizontal, 15)
                         .padding(.bottom)
-                        .padding(.top, UIApplication.shared.windows.first?.safeAreaInsets.top)
                         .background(.white)
                         .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 5)
                     
@@ -37,10 +36,10 @@ struct ContentView: View {
                                 ForEach(products) { product in
                                     ProductItemView(product: product)
                                         .onTapGesture {
+                                            feedback.impactOccurred()
                                             withAnimation(.easeOut) {
                                                 shop.selectedProduct = product
                                                 shop.showingProduct = true
-                                                print("tapped \(product.name)")
                                             }
                                         }
                                 } //: LOOP
@@ -61,7 +60,7 @@ struct ContentView: View {
                 ProductDetailView()
             }
         } //: ZStack
-        .ignoresSafeArea(.all, edges: .top)
+//        .ignoresSafeArea(.all, edges: .top)
     }
 }
 
